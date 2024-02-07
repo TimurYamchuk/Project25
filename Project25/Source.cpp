@@ -1,249 +1,163 @@
-#include "Windows.h"
-#include "windowsx.h"
-#include "tchar.h"
-#include "string"
-using namespace std;
-
-//int leftClicks = 0;
-//int rightClicks = 0;
-//int middleClicks = 0;
-//
-//LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-//
-//int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd)
-//{
-//    WNDCLASSEX wc = { sizeof(WNDCLASSEX) };
-//    wc.style = CS_HREDRAW | CS_VREDRAW;
-//    wc.lpfnWndProc = WindowProc;
-//    wc.hInstance = hInstance;
-//    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-//    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-//    wc.lpszClassName = _T("MainWindowClass");
-//
-//    if (!RegisterClassEx(&wc))
-//        return 0;
-//
-//    HWND hwnd = CreateWindowEx(
-//        0,
-//        _T("MainWindowClass"),
-//        _T("My first window"),
-//        WS_OVERLAPPEDWINDOW,
-//        CW_USEDEFAULT, CW_USEDEFAULT,
-//        CW_USEDEFAULT, CW_USEDEFAULT,
-//        NULL, NULL, hInstance, NULL);
-//
-//    if (!hwnd)
-//        return 0;
-//
-//    ShowWindow(hwnd, nShowCmd);
-//    UpdateWindow(hwnd);
-//
-//    MSG msg;
-//    while (GetMessage(&msg, NULL, 0, 0))
-//    {
-//        TranslateMessage(&msg);
-//        DispatchMessage(&msg);
-//    }
-//
-//    return msg.wParam;
-//}
-//
-//LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-//{
-//    switch (uMsg)
-//    {
-//    case WM_DESTROY:
-//        PostQuitMessage(0);
-//        break;
-//    case WM_LBUTTONDOWN:
-//        leftClicks++;
-//        SetWindowText(hwnd, (_T("Left clicks: ") + to_wstring(leftClicks)).c_str());
-//        break;
-//    case WM_RBUTTONDOWN:
-//        rightClicks++;
-//        SetWindowText(hwnd, (_T("Right clicks: ") + to_wstring(rightClicks)).c_str());
-//        break;
-//    case WM_MBUTTONDOWN:
-//        middleClicks++;
-//        SetWindowText(hwnd, (_T("Middle clicks: ") + to_wstring(middleClicks)).c_str());
-//        break;
-//    default:
-//        return DefWindowProc(hwnd, uMsg, wParam, lParam);
-//    }
-//
-//    return 0;
-//}
 
 
-
-
-//LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-//
-//int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nShowCmd)
-//{
-//    WCHAR className[] = L"FirstWindow";
-//
-//    WNDCLASSEX wndClass;
-//    wndClass.cbSize = sizeof(WNDCLASSEX);
-//    wndClass.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
-//    wndClass.hInstance = hInstance;
-//    wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-//    wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-//    wndClass.hIconSm = NULL;
-//    wndClass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-//    wndClass.cbClsExtra = 0;
-//    wndClass.cbWndExtra = 0;
-//    wndClass.lpszMenuName = NULL;
-//    wndClass.lpszClassName = className;
-//
-//    wndClass.lpfnWndProc = WindowProc;
-//
-//    if (!RegisterClassEx(&wndClass)) {
-//        return 0;
-//    }
-//
-//    HWND hWnd = CreateWindowEx(
-//        0,
-//        className,
-//        L"My first window",
-//        WS_OVERLAPPEDWINDOW,
-//        CW_USEDEFAULT, CW_USEDEFAULT, 
-//        400, 400, 
-//        NULL,
-//        NULL,
-//        hInstance,
-//        NULL
-//    );
-//
-//    ShowWindow(hWnd, nShowCmd);
-//    UpdateWindow(hWnd);
-//
-//    MSG msg;
-//    while (GetMessage(&msg, NULL, 0, 0)) {
-//        DispatchMessage(&msg);
-//    }
-//
-//    return msg.wParam;
-//}
-//
-//LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-//{
-//    switch (uMsg)
-//    {
-//    case WM_DESTROY:
-//        PostQuitMessage(0); 
-//        break;
-//    case WM_LBUTTONDOWN:
-//        SetWindowText(hwnd, L"Êàëüêóëÿòîð");
-//        break;
-//
-//    case WM_RBUTTONDOWN:
-//
-//        break;
-//
-//    case WM_MBUTTONDOWN:
-//        break;
-//
-//    case WM_MOUSEMOVE:
-//    {
-//        int x = GET_X_LPARAM(lParam);
-//        int y = GET_Y_LPARAM(lParam);
-//
-//        break;
-//    }
-//
-//    case WM_RBUTTONUP:
-//    {
-//        RECT rect;
-//        GetWindowRect(hwnd, &rect); 
-//
-//        int width = rect.right - rect.left;
-//        int height = rect.bottom - rect.top;
-//
-//        MoveWindow(hwnd, rect.left, rect.top, width, height, true);
-//        break;
-//    }
-//
-//    case WM_MBUTTONUP:
-//    {
-//        RECT rect;
-//        GetClientRect(hwnd, &rect);
-//        break;
-//    }
-//
-//    default:
-//        return DefWindowProc(hwnd, uMsg, wParam, lParam);
-//    }
-//
-//    return 0;
-//}
-
-
-
-
-
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
-int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nShowCmd)
-{
-    WNDCLASSEX wc = { sizeof(WNDCLASSEX) };
-    wc.lpfnWndProc = WindowProc;
-    wc.hInstance = hInstance;
-    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wc.lpszClassName = L"MainWindowClass";
-
-    RegisterClassEx(&wc);
-
-    HWND hWnd = CreateWindowEx(
-        0, L"MainWindowClass", L"My first window", WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, CW_USEDEFAULT, 500, 500,
-        NULL, NULL, hInstance, NULL
-    );
-
-    ShowWindow(hWnd, nShowCmd);
-    UpdateWindow(hWnd);
-
-    MSG msg;
-    while (GetMessage(&msg, NULL, 0, 0)) {
-        DispatchMessage(&msg);
+void main() {
+    _TCHAR a[] = _TEXT("ERNEST SYSTEM ALTOVSKYI DDKE");
+    wcout << "Start: " << a << endl;
+    for (int i = 0; i < _tcslen(a); i++) {
+        if (a[i] == _TEXT(' '))
+            a[i] = _TEXT('\t');
     }
-
-    return msg.wParam;
+    wcout << "Result: " << a << endl;
+    system("pause");
 }
 
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-    RECT rect;
-    GetWindowRect(hwnd, &rect);
 
-    switch (uMsg)
-    {
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    case WM_KEYDOWN:
-        switch (wParam)
-        {
-        case VK_RETURN:
-            MoveWindow(hwnd, 0, 0, 300, 300, TRUE);
-            break;
-        case VK_LEFT:
-            MoveWindow(hwnd, rect.left - 20, rect.top, 0, 0, TRUE);
-            break;
-        case VK_RIGHT:
-            MoveWindow(hwnd, rect.left + 20, rect.top, 0, 0, TRUE);
-            break;
-        case VK_UP:
-            MoveWindow(hwnd, rect.left, rect.top - 20, 0, 0, TRUE);
-            break;
-        case VK_DOWN:
-            MoveWindow(hwnd, rect.left, rect.top + 20, 0, 0, TRUE);
-            break;
-        }
-        break;
-    default:
-        return DefWindowProc(hwnd, uMsg, wParam, lParam);
+
+void main() {
+    _TCHAR a[] = _TEXT("ERNEST2123SYS||@@M43566@@@5ALTOVSKYI/9876DDKE1234");
+    wcout << "Start: " << a << endl;
+    int bukvy = 0, tsifry = 0, simvoly = 0;
+    for (size_t i = 0; i < _tcslen(a); i++) {
+        if (a[i] > 48 && a[i] < 57)
+            tsifry++;
+        else if (a[i] >= 65 && a[i] <= 90 || a[i] >= 97 && a[i] <= 122)
+            bukvy++;
+        else
+            simvoly++;
     }
+    wcout << "bukvy: " << bukvy << endl << "tsifry: " << tsifry << endl << "simvoly: " << simvoly << endl;
+    system("pause");
+}
 
+
+
+
+void main() {
+    _TCHAR a[] = _TEXT("The meaning of life is like an abstraction in OOP, but in reality.");
+    wcout << "Start: " << a << endl;
+    int Ñount = 0;
+    bool inWord = false;
+    for (int i = 0; i < _tcslen(a); i++) {
+        if (iswalpha(a[i])) {
+            if (!inWord) {
+                inWord = true;
+                Ñount++;
+            }
+        }
+        else {inWord = false;}
+    }
+    wcout << "Word count: " << Ñount << endl;
+    system("pause");
+}
+
+
+
+
+void main() {
+    setlocale(LC_ALL, "Russian");
+    _TCHAR a[] = _TEXT("ÐÐºÐ°ÐºÐ°ÐºÐ°");
+    wcout << "Start: " << a << endl;
+    int count = 0;
+    for (size_t i = 0; i < _tcslen(a); i++) {
+        _TCHAR b = _totlower(a[i]);
+        if (b == _TEXT('Ð°') || b == _TEXT('Ðµ') || b == _TEXT('Ñ‘') || b == _TEXT('Ð¸') || b == _TEXT('Ð¾') || 
+            b == _TEXT('Ñƒ') || b == _TEXT('Ñ‹') || b == _TEXT('Ñ') || b == _TEXT('ÑŽ') ||
+            b == _TEXT('Ñ')) {++count;}
+    }
+    wcout << "Count: " << count << endl;
+    system("pause");
+}
+
+
+
+
+
+bool isPalindrome(const _TCHAR*);
+
+int main() {
+    _TCHAR a[] = _TEXT("DOKOD");
+    wcout << "Start: " << a << endl;
+    if (isPalindrome(a))
+        wcout << "It's a palindrome!" << endl;
+    else
+        wcout << "It's not a palindrome!" << endl;
+
+    system("pause");
     return 0;
+}
+
+bool isPalindrome(const _TCHAR* c) {
+    int length = _tcslen(c);
+    for (int i = 0; i < length / 2; ++i) {
+        if (c[i] != c[length - 1 - i])
+            return false;
+    }
+    return true;
+}
+
+
+
+
+void removeSymbol(_TCHAR*, size_t);
+
+int main() {
+    TCHAR a[] = _TEXT("The meaning of life is ...");
+    wcout << "Start: " << a << endl;
+    size_t posRemove = 0;
+    removeSymbol(a, posRemove);
+    wcout << "Removing position is " << posRemove << ", result: " << a << endl;
+    system("pause");
+    return 0;
+}
+
+void removeSymbol(_TCHAR* c, size_t l) {
+    if (l >= _tcslen(c))
+        return;
+    for (size_t i = l; i < _tcslen(c); i++)
+        c[i] = c[i + 1];
+}
+
+
+
+
+void removeAllElems(_TCHAR* c, _TCHAR toRemove) {
+    size_t length = _tcslen(c);
+    size_t ind = 0;
+    for (size_t i = 0; i < length; i++) {
+        if (c[i] != toRemove) {
+            c[ind] = c[i];
+            ind++;
+        }
+    }
+    c[ind] = _TEXT('\0');
+}
+
+void main() {
+    _TCHAR a[] = _TEXT("The meaning of life is ...");
+    _TCHAR r = _TEXT('e');
+    wcout << "Start: " << a << endl;
+    removeAllElems(a, r);
+    wcout << "Removing elem is " << r << ", result: " << a << endl;
+    system("pause");
+}
+
+
+
+void insertCharacter(_TCHAR* c, size_t pos, _TCHAR ins) {
+    int length = _tcslen(c);
+    if (pos >= 0 && pos <= length) {
+        for (int i = length; i > pos; i--) {
+            c[i] = c[i - 1];
+        }
+        c[pos] = ins;
+    }
+}
+
+void main() {
+    _TCHAR a[] = _TEXT("The meaning of life is ...");
+    wcout << "Start: " << a << endl;
+    _TCHAR insElem = _T('E'); 
+    size_t posIns = 10;
+    insertCharacter(a, posIns, insElem);
+    wcout << "Integrated elem is " << insElem << ", result: " << a << endl;
 }
